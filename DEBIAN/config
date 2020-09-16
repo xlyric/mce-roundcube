@@ -19,7 +19,7 @@ if [ "$CONFTYPE" == *"Postgres"* ];  then
     db_input critical $PACKAGE/rchostname || true
 fi
 
-# RC database 
+# RC database
 
     db_input critical $PACKAGE/rcdbname || true
     db_input critical $PACKAGE/rcdbuser || true
@@ -35,6 +35,9 @@ fi
 
 # ldap hostname
     db_input critical $PACKAGE/ldaphostname || true
+
+# imap hostname
+    db_input critical $PACKAGE/imapproxy || true
 
 
 # Show interface

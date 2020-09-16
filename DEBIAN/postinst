@@ -62,6 +62,7 @@ if is_initial_configuration "$@"; then
         RCDBPW=""
 
 	LDAPHOSTNAME=""
+	IMAPHOSTNAME=""
 
 # get conf RC
                 db_get  $PACKAGE/rcdbname || true
@@ -86,13 +87,14 @@ if is_initial_configuration "$@"; then
                 db_get  $PACKAGE/m2dbpw || true
                 M2DBPW=$RET
 
-#get conf LDAP
+#get conf LDAP  / IMAP
                 db_get  $PACKAGE/ldaphostname || true
                 LDAPHOSTNAME=$RET
 
+		db_get  $PACKAGE/imapproxy || true
+                IMAPHOSTNAME=$RET
 
-
-        /bin/bash  $CONFSCRIPT -s "$RCHOSTNAME" -d "$RCDBNAME" -u "$RCDBUSER" -w "$RCDBPW" -S "$M2HOSTNAME" -D "$M2DBNAME" -u "$M2DBUSER" -W "$M2DBPW" -l "$LDAPHOSTNAME"
+        /bin/bash  $CONFSCRIPT -s "$RCHOSTNAME" -d "$RCDBNAME" -u "$RCDBUSER" -w "$RCDBPW" -S "$M2HOSTNAME" -D "$M2DBNAME" -U "$M2DBUSER" -W "$M2DBPW" -l "$LDAPHOSTNAME" -i "IMAPHOSTNAME"
 
     else
         echo "You have, now, to launch $CONFSCRIPT  script for configuring Postfix"

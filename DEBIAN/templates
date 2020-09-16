@@ -59,3 +59,8 @@ Default: ldap.mce.com
 Description: Ldap hostname
   Ldap hostname  as e.g melanie2
 
+Template: mce-roundcube/imapproxy
+Type: String
+Default: imap.mce.com
+Description: imap proxy hostname
+  imap proxy hostname  as e.g proxy.mce.com

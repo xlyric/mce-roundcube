@@ -62,6 +62,7 @@ RCDBUSER=""
 RCDBPW=""
 
 LDAPHOSTNAME=""
+IMAPHOSTNAME=""
 
 PGVERSION=$(dpkg -l "postgresql*"|grep ^ii|grep server|tr -s " "|cut -d " " -f2|sed 's/postgresql-//')
 
@@ -70,7 +71,7 @@ PGVERSION=$(dpkg -l "postgresql*"|grep ^ii|grep server|tr -s " "|cut -d " " -f2|
 # Options list                                                                                                                                                                              #
 ############################################################################################################################################################################################# 
 
-TEMP=`getopt -o s:d:u:w:S:D:U:W:l:hvc -l rchostname:,rcdbname:,rcdbuser:,m2hostname:,m2dbname:,m2dbuser:,m2dbpw:,ldaphostname,help,version,checkenv -n "$(basename $0)" -- "$@"`
+TEMP=`getopt -o s:d:u:w:S:D:U:W:l:i:hvc -l rchostname:,rcdbname:,rcdbuser:,rcdbpw:,m2hostname:,m2dbname:,m2dbuser:,m2dbpw:,ldaphostname:,imapproxy:,help,version,checkenv -n "$(basename $0)" -- "$@"`
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 
 eval set -- "$TEMP"
@@ -265,6 +266,8 @@ while true ; do
         -l | --ldaphostname )
             LDAPHOSTNAME=$(echo $2) ; shift 2 ;;
 
+	-i | --imapproxy )
+            IMAPHOSTNAME=$(echo $2) ; shift 2 ;;
 
         --) shift; break ;;
         *) break ;;
@@ -364,16 +367,13 @@ echo -e "${GREEN}configure melanie2 file ${NC}"
 	sed -i 's/myuser/'$M2DBUSER'/g' $REPCONF/sql.php
 	sed -i 's/P4ss./'$M2DBPW'/g' $REPCONF/sql.php
 
-# config ldap
+# config roundcube
 echo -e "${GREEN}configure roundcube file ${NC}"
 	sed -i 's/%%HOST%%/'$RCHOSTNAME'/g'  $WEB/config/config.inc.php
         sed -i 's/%%BASE%%/'$RCDBNAME'/g' $WEB/config/config.inc.php
         sed -i 's/%%USER%%/'$RCDBUSER'/g' $WEB/config/config.inc.php
         sed -i 's/%%PASS%/'$RCDBPW'/g' $WEB/config/config.inc.php
-
-
-
-
+	sed -i 's/serverimap%/'$IMAPHOSTNAME'/g' $WEB/config/config.inc.php
 
 
 exit 0
