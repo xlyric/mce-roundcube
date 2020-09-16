@@ -338,20 +338,42 @@ ln -s /etc/nginx/sites-available/$LOCALAPP.conf /etc/nginx/sites-enabled/
 mkdir /etc/nginx/certs
 
 echo -e "${GREEN}copy demo certificate ${NC}"
-mv $LOCALFILES/config/$LOCALAPP-srv.mce.com.* /etc/nginx/certs
+	mv $LOCALFILES/config/$LOCALAPP-srv.mce.com.* /etc/nginx/certs
 
-service php7.3-fpm restart
-service nginx restart
+	service php7.3-fpm restart
+	service nginx restart
 
 # conf memcache
-cp $LOCALFILES/config/memcached.conf.roundcube /etc/memcached.conf
-service memcached restart
+	cp $LOCALFILES/config/memcached.conf.roundcube /etc/memcached.conf
+	service memcached restart
 
 # create log folder
 echo -e "${GREEN}create log folder${NC}"
 
-mkdir /var/log/roundcube/
-chown www-data. /var/log/roundcube/
+	mkdir /var/log/roundcube/
+	chown www-data. /var/log/roundcube/
+
+# config ldap
+echo -e "${GREEN}configure ldap file ${NC}"
+	sed -i 's/ldap.test/'$LDAPHOSTNAME'/g' $REPCONF/ldap.php
+
+# config  M2
+echo -e "${GREEN}configure melanie2 file ${NC}"
+	sed -i 's/sgbd.test/'$M2HOSTNAME'/g' $REPCONF/sql.php
+	sed -i 's/mybase/'$M2DBNAME'/g' $REPCONF/sql.php
+	sed -i 's/myuser/'$M2DBUSER'/g' $REPCONF/sql.php
+	sed -i 's/P4ss./'$M2DBPW'/g' $REPCONF/sql.php
+
+# config ldap
+echo -e "${GREEN}configure roundcube file ${NC}"
+	sed -i 's/%%HOST%%/'$RCHOSTNAME'/g'  $WEB/config/config.inc.php
+        sed -i 's/%%BASE%%/'$RCDBNAME'/g' $WEB/config/config.inc.php
+        sed -i 's/%%USER%%/'$RCDBUSER'/g' $WEB/config/config.inc.php
+        sed -i 's/%%PASS%/'$RCDBPW'/g' $WEB/config/config.inc.php
+
+
+
+
 
 
 exit 0
