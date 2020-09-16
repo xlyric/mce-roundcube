@@ -32,30 +32,30 @@ Description: Melanie2 DB user password
 Template: mce-roundcube/rchostname
 Type: String
 Default: roundcube.mce.com
-Description: Melanie2 DB hostname
+Description: Roundcube DB hostname
  Roundcube DB hostname  as e.g melanie2
 
 Template: mce-roundcube/rcdbname
 Type: String
 Default: roundcube
-Description: Melanie2 DB name
+Description: Roundcube DB name
  Roundcube DB name  as e.g melanie2
 
 Template: mce-roundcube/rcdbuser
 Type: String
 Default: roundcube
-Description: Melanie2 DB username
+Description: Roundcube DB username
  Roundcube DB username as e.g melanie2
 
 Template: mce-roundcube/rcdbpw
 Type: String
-Default: rcpassword
-Description: Melanie2 DB user password
+Default: roundcube
+Description: Roundcube DB user password
  Roundcube DB user password as e.g melanie2
 
 Template: mce-roundcube/ldaphostname
 Type: String
 Default: ldap.mce.com
-Description: Melanie2 DB hostname
- Roundcube DB hostname  as e.g melanie2
+Description: Ldap hostname
+  Ldap hostname  as e.g melanie2
 
