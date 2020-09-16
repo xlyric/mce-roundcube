@@ -91,7 +91,6 @@ if is_initial_configuration "$@"; then
                 LDAPHOSTNAME=$RET
 
 
-            fi
 
         /bin/bash  $CONFSCRIPT -s "$RCHOSTNAME" -d "$RCDBNAME" -u "$RCDBUSER" -w "$RCDBPW" -S "$M2HOSTNAME" -D "$M2DBNAME" -u "$M2DBUSER" -W "$M2DBPW" -l "$LDAPHOSTNAME"
 
