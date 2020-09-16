@@ -15,10 +15,8 @@ db_get $PACKAGE/confType
 CONFTYPE=$RET
 
 # if external database
-if [[ "$CONFTYPE" == *"Postgres"* ]]  then
+if [ "$CONFTYPE" == *"Postgres"* ];  then
     db_input critical $PACKAGE/rchostname || true
-
-
 fi
 
 # RC database 
