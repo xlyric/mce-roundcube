@@ -290,6 +290,7 @@ rm webmail.tgz
 # create M2 folder
 if [ ! -d $REPCONF ]
         then
+	echo -e "${GREEN}Create M2 folder{NC}"
         mkdir $REPCONF
         chown www-data. $REPCONF
         cp $WEB/vendor/messagerie-melanie2/orm-m2/config/default/* $REPCONF
@@ -298,17 +299,19 @@ fi
 #install last default  roundcube configuration file
 if [ ! -f $WEB/config/config.inc.php ]
         then
-        cp $LOCALFILES/config.inc.php $WEB/config/config.inc.php
+	echo -e "${GREEN}Create config.inc.php${NC}"
+        cp $LOCALFILES/config/config.inc.php $WEB/config/config.inc.php
 fi
 
 
 # change default plusgin config file
 if [ ! -f $REPCONF/config.inc.php ]
         then
-        cp $LOCALFILES/config.inc.php.agreg $REPCONF/config.inc.php
+	echo -e "${GREEN}agregation plugin config files${NC}"
+        cp $LOCALFILES/config/config.inc.php.agreg $REPCONF/config.inc.php
         cd $WEB/plugins/mel
-        cp $LOCALFILES/config.inc.php.ori config.inc.php
-        cat $LOCALFILES/copylist | while read line
+        cp $LOCALFILES/config/config.inc.php.ori config.inc.php
+        cat $LOCALFILES/config/copylist | while read line
                 do
                 cp config.inc.php $line
                 done
@@ -320,6 +323,9 @@ fi
 # correction of template larry
 echo -e "${GREEN}correction template mel_larry${NC}"
 cp $LOCALFILES/config/resources_elements.html  $WEB/plugins/mel_moncompte/skins/mel_larry/templates/resources_elements.html
+chown -R www-data. $REPCONF
+
+echo -e "${GREEN}applilcation des parametres{NC}"
 cp $LOCALFILES/config/ldap.php   $REPCONF/ldap.php
 chown -R www-data. $REPCONF
 
