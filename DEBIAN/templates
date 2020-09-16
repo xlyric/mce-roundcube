@@ -1,0 +1,61 @@
+Template: mce-roundcube/confType
+Type: select
+Choices: Roundcube Alone, Roundcube and Postgres
+Default: Roundcube Alone
+Description: Define installation type
+ Define installation type
+
+Template: mce-roundcube/m2hostname
+Type: String
+Default: m2db.mce.com
+Description: Melanie2 DB hostname
+ Melanie2 DB hostname  as e.g melanie2
+
+Template: mce-roundcube/m2dbname
+Type: String
+Default: melanie2
+Description: Melanie2 DB name
+ Melanie2 DB name  as e.g melanie2
+
+Template: mce-roundcube/m2dbuser
+Type: String
+Default: melanie2
+Description: Melanie2 DB username
+ Melanie2 DB username as e.g melanie2
+
+Template: mce-roundcube/m2dbpw
+Type: String
+Default: melanie2
+Description: Melanie2 DB user password
+ Melanie2 DB user password as e.g melanie2
+
+Template: mce-roundcube/rchostname
+Type: String
+Default: roundcube.mce.com
+Description: Melanie2 DB hostname
+ Roundcube DB hostname  as e.g melanie2
+
+Template: mce-roundcube/rcdbname
+Type: String
+Default: roundcube
+Description: Melanie2 DB name
+ Roundcube DB name  as e.g melanie2
+
+Template: mce-roundcube/rcdbuser
+Type: String
+Default: roundcube
+Description: Melanie2 DB username
+ Roundcube DB username as e.g melanie2
+
+Template: mce-roundcube/rcdbpw
+Type: String
+Default: rcpassword
+Description: Melanie2 DB user password
+ Roundcube DB user password as e.g melanie2
+
+Template: mce-roundcube/ldaphostname
+Type: String
+Default: ldap.mce.com
+Description: Melanie2 DB hostname
+ Roundcube DB hostname  as e.g melanie2
+

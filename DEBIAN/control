@@ -1,0 +1,8 @@
+Package: mce-roundcube
+Version: 1.0.0
+Section: base
+Priority: optional
+Architecture: all
+Depends: bash, nginx,  php-fpm,  php-memcached, memcached, php , php-pgsql, php-ldap, php-mbstring,  php-xml, postgresql-11, postgresql-client-11, postgresql-contrib-11, php-pgsql, php-soap
+Maintainer: Mr Cyril Poissonnier
+Description: Installation de Roundcube préconfiguré pour Melanie2

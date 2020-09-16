@@ -1,0 +1,43 @@
+#!/bin/bash
+set -e
+
+if [ -f /usr/share/debconf/confmodule ]; then
+  . /usr/share/debconf/confmodule
+fi
+
+PACKAGE="mce-roundcube"
+
+
+# Ask questions
+
+db_input critical  $PACKAGE/confType || true
+db_get $PACKAGE/confType
+CONFTYPE=$RET
+
+# if external database
+if [[ "$CONFTYPE" == *"Postgres"* ]]  then
+    db_input critical $PACKAGE/rchostname || true
+
+
+fi
+
+# RC database 
+
+    db_input critical $PACKAGE/rcdbname || true
+    db_input critical $PACKAGE/rcdbuser || true
+    db_input critical $PACKAGE/rcdbpw || true
+
+
+
+# melanie2 database
+    db_input critical $PACKAGE/m2hostname || true
+    db_input critical $PACKAGE/m2dbname || true
+    db_input critical $PACKAGE/m2dbuser || true
+    db_input critical $PACKAGE/m2dbpw || true
+
+# ldap hostname
+    db_input critical $PACKAGE/ldaphostname || true
+
+
+# Show interface
+db_go || true
