@@ -29,7 +29,7 @@ version=1.0.0
 
 if [ $(whoami) != "root" ] ; then echo "This script must be launched with superuser administrative rights ! Bye" ; exit 1 ;  fi
 
-LOCALFILES="/usr/share/mce-roundcube/"
+LOCALFILES="/usr/share/mce-roundcube"
 LOCALAPP="roundcube"
 REPCONF="/etc/LibM2"
 SOURCE="https://github.com/messagerie-melanie2/Roundcube-Mel/releases/download/1.4.8.5/Roundcube_Mel_1.4.8.5_ORM_0.6.0.15_20200813110152.tar.gz"

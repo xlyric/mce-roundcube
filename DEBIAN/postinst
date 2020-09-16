@@ -16,7 +16,7 @@ CONFSCRIPT="/usr/share/mce-roundcube/scripts/configure.sh"
 	BLUE='\033[1;34m'
 	NC='\033[0m' # No Color
 
-echo -e " ${GREEN} initial configuration{NC}"
+echo -e " ${GREEN} initial configuration${NC}"
 is_initial_configuration() {
 # Check if this is the initial configuration and not an upgrade of an
 # existing configuration
