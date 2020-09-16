@@ -373,7 +373,7 @@ echo -e "${GREEN}configure roundcube file ${NC}"
         sed -i 's/%%BASE%%/'$RCDBNAME'/g' $WEB/config/config.inc.php
         sed -i 's/%%USER%%/'$RCDBUSER'/g' $WEB/config/config.inc.php
         sed -i 's/%%PASS%/'$RCDBPW'/g' $WEB/config/config.inc.php
-	sed -i 's/serverimap%/'$IMAPHOSTNAME'/g' $WEB/config/config.inc.php
+	sed -i 's/serverimap/'$IMAPHOSTNAME'/g' $WEB/config/config.inc.php
 
 
 exit 0
