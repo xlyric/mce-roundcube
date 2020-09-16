@@ -290,7 +290,7 @@ rm webmail.tgz
 # create M2 folder
 if [ ! -d $REPCONF ]
         then
-	echo -e "${GREEN}Create M2 folder{NC}"
+	echo -e "${GREEN}Create M2 folder${NC}"
         mkdir $REPCONF
         chown www-data. $REPCONF
         cp $WEB/vendor/messagerie-melanie2/orm-m2/config/default/* $REPCONF
@@ -336,7 +336,9 @@ rm /etc/nginx/sites-enabled/default
 
 ln -s /etc/nginx/sites-available/$LOCALAPP.conf /etc/nginx/sites-enabled/
 mkdir /etc/nginx/certs
-mv $LOCALFILES/$LOCALAPP-srv.mce.com.* /etc/nginx/certs
+
+echo -e "${GREEN}copy demo certificate ${NC}"
+mv $LOCALFILES/config/$LOCALAPP-srv.mce.com.* /etc/nginx/certs
 
 service php7.3-fpm restart
 service nginx restart
